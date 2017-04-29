@@ -57,7 +57,10 @@ func createDroplet(client *godo.Client, droplet *godo.DropletCreateRequest, wg *
 func getDroplet(client *godo.Client) ([]int, []string) {
 	var dropletids []int
 	var dropletips []string
-	listoptions := &godo.ListOptions{}
+	listoptions := &godo.ListOptions{
+			1,
+			100,
+			}
 	droplet, _, _ := client.Droplets.List(context.TODO(), listoptions)
 	for _, d := range droplet {
 		ip, _ := d.PublicIPv4()
